@@ -1,1 +1,1 @@
-[a link](https://gannonk08.github.io/angular-form-validation/)
+[Link to gh-pages](https://gannonk08.github.io/angular-form-validation/)
