@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <meta charset="utf-8"/>
+    <title>Angular Form Validation</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>User Validator</h1>
+      </header>
+
+        <form name="exampleForm" ng-controller="formPoster">
+          <div class="row" ng-show="formSubmitted">
+            <h3> {{userName}}
+            {{userPassword}}
+            {{userEmail}}
+            {{zipcode}}
+            </h3>
+          </div>
+          <label for="userName" >Username:</label>
+          <input type="text" name="userName" ng-model="userName" ng-minlength="3" ng-maxlength="12" required/>
+          <div ng-messages="exampleForm.userName.$error">
+            <div ng-message="required">This field is required</div>
+            <div ng-message="minlength">Username must be at least 3 characters</div>
+            <div ng-message="maxlength">Username cannot be longer than 12 characters</div>
+          </div>
+
+          <label>Password:</label>
+          <input type="password" name="userPassword" ng-model="userPassword" ng-minlength="3" ng-maxlength="12" required/>
+          <div ng-messages="exampleForm.userPassword.$error">
+            <div ng-message="required">This field is required</div>
+            <div ng-message="minlength">Password must be at least 3 characters</div>
+            <div ng-message="maxlength">Password cannot be longer than 12 characters</div>
+          </div>
+
+          <label>Email Address:</label>
+          <input type="email" name="userEmail" ng-model="userEmail" ng-minlength="3" required/>
+          <div ng-messages="exampleForm.userEmail.$error">
+            <div ng-message="required">This field is required</div>
+            <div ng-message="email">Your email address is invalid</div>
+          </div>
+
+          <label>Zip Code:</label>
+          <input type="text" name="userZipCode" ng-model="zipcode" ng-pattern="/(^\d{5}$)|(^\d{5}-\d{4}$)/" required/>
+          <div ng-messages="exampleForm.userZipCode.$error">
+            <div ng-message="required">This field is required</div>
+            <div ng-message="pattern">Must be a valid 6 digit Zip Code</div>
+          </div>
+          <br>
+          <button ng-click="postResults()"class="btn waves-effect waves-light" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+          </button>
+
+        </form>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.10/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.5.8/angular-messages.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <script src="app.js"></script>
+
+  </body>
+</html>
